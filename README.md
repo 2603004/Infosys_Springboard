@@ -30,7 +30,7 @@ This milestone implements a pipeline that:
    - `all-mpnet-base-v2` (MPNet)
 5. **Comparison**: Cosine similarity matrices, pairwise scatterplots comparing model similarities, and PCA+t-SNE visualizations.
 
-📊 Observations and Model Comparison
+## Observations and Model Comparison
 
 | Model                                    | Embedding Dimension | Key Characteristics                                           | Performance Observation                                                                                      |
 | ---------------------------------------- | ------------------- | ------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------ |
@@ -38,7 +38,7 @@ This milestone implements a pipeline that:
 | **DistilRoBERTa (all-distilroberta-v1)** | 768                 | Deeper transformer with robust language understanding         | Captures textual semantics better than structure; sometimes confuses variable naming similarities.           |
 | **MPNet (all-mpnet-base-v2)**            | 768                 | Advanced model combining masked and permuted token prediction | Achieves highest semantic consistency; closely clusters algorithmically similar snippets (recursion, loops). |
 
-📈 Visual Results
+## Visual Results
 
 Heatmaps: Show dense high-similarity zones for functionally related snippets.
 

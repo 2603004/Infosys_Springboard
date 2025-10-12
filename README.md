@@ -31,10 +31,13 @@ This milestone implements a pipeline that:
 5. **Comparison**: Cosine similarity matrices, pairwise scatterplots comparing model similarities, and PCA+t-SNE visualizations.
 
 📊 Observations and Model Comparison
-Model	Observations	Similarity Pattern	Example Behavior
-MiniLM	Compact and efficient; identifies algorithmic similarity (e.g., sorting, recursion) even with different variable names.	Focuses on semantic logic patterns.	Groups bubble sort and insertion sort together.
-DistilRoBERTa	Sensitive to token naming and comments; less accurate for structural similarity.	Clusters snippets with similar text surface forms.	Groups functions with same variable names, even if logic differs.
-MPNet	Most context-aware; balances lexical and structural similarity. Captures deeper algorithmic semantics.	Smooth, meaningful clusters in t-SNE visualization.	Groups factorial (recursion) and fibonacci (recursion) closely due to shared recursion pattern.
+
+| Model                                    | Embedding Dimension | Key Characteristics                                           | Performance Observation                                                                                      |
+| ---------------------------------------- | ------------------- | ------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------ |
+| **MiniLM (all-MiniLM-L6-v2)**            | 384                 | Lightweight, fast, optimized for sentence-level meaning       | Captures structural and functional similarity well. Factorial and Fibonacci cluster closely.                 |
+| **DistilRoBERTa (all-distilroberta-v1)** | 768                 | Deeper transformer with robust language understanding         | Captures textual semantics better than structure; sometimes confuses variable naming similarities.           |
+| **MPNet (all-mpnet-base-v2)**            | 768                 | Advanced model combining masked and permuted token prediction | Achieves highest semantic consistency; closely clusters algorithmically similar snippets (recursion, loops). |
+
 📈 Visual Results
 
 Heatmaps: Show dense high-similarity zones for functionally related snippets.

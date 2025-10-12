@@ -30,10 +30,18 @@ This milestone implements a pipeline that:
    - `all-mpnet-base-v2` (MPNet)
 5. **Comparison**: Cosine similarity matrices, pairwise scatterplots comparing model similarities, and PCA+t-SNE visualizations.
 
-## Observations & Next steps
-- The models produce different similarity distributions; MPNet and MiniLM often cluster similar algorithmic patterns together.
-- For deeper code understanding, swap in code-pretrained models such as `microsoft/codebert-base` or `Salesforce/codet5-*`. These require tokenization changes and potentially different pooling strategies.
-- Consider fine-tuning or using dedicated code embedding models for larger datasets.
+📊 Observations and Model Comparison
+Model	Observations	Similarity Pattern	Example Behavior
+MiniLM	Compact and efficient; identifies algorithmic similarity (e.g., sorting, recursion) even with different variable names.	Focuses on semantic logic patterns.	Groups bubble sort and insertion sort together.
+DistilRoBERTa	Sensitive to token naming and comments; less accurate for structural similarity.	Clusters snippets with similar text surface forms.	Groups functions with same variable names, even if logic differs.
+MPNet	Most context-aware; balances lexical and structural similarity. Captures deeper algorithmic semantics.	Smooth, meaningful clusters in t-SNE visualization.	Groups factorial (recursion) and fibonacci (recursion) closely due to shared recursion pattern.
+📈 Visual Results
+
+Heatmaps: Show dense high-similarity zones for functionally related snippets.
+
+PCA/t-SNE Plots: Reveal tighter and more semantically consistent clusters for MPNet and MiniLM than DistilRoBERTa.
+
+Distribution: MPNet produces more uniform embeddings, whereas DistilRoBERTa shows scattered variance.
 
 ## Notes
 - This pipeline is intentionally minimal and reproducible in Colab.
